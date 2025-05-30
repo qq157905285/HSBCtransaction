@@ -24,8 +24,7 @@ public class RateLimiterAspect {
         if (limiter.acquirePermission()) {
             return joinPoint.proceed();
         } else {
-            // 正确抛出内置的限流异常
-            throw RequestNotPermitted.createRequestNotPermitted(limiter);
+            throw new RequestNotPermitted("请求过多，请稍后再试");
         }
     }
 }

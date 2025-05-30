@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import jakarta.validation.constraints.*;
 
-@Data
 public class Transaction {
     private String id;
 
@@ -36,6 +35,7 @@ public class Transaction {
         this.description = description;
         this.amount = amount;
         this.timestamp = LocalDateTime.now();
+        this.type = transactinType;
     }
 
     public String getId() {

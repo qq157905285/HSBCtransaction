@@ -16,7 +16,7 @@ public class TransactionServiceTest {
     private TransactionService service;
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         service = new TransactionServiceImpl();
     }
 
@@ -49,7 +49,13 @@ public class TransactionServiceTest {
         for (int i = 0; i < 20; i++) {
             service.create(new Transaction("Tx" + i, new BigDecimal(i), Transaction.TransactionType.TRANSFER));
         }
-        List<Transaction> page = service.findPaginated(1, 5, null);
-        assertEquals(5, page.size());
+        List<Transaction> page1 = service.findPaginated(0, 5, null);
+        List<Transaction> page2 = service.findPaginated(1, 5, null);
+
+        assertEquals(5, page1.size());
+        assertEquals(5, page2.size());
+
+        assertEquals("Tx0", page1.get(0).getDescription());
+        assertEquals("Tx5", page2.get(0).getDescription());
     }
 }
