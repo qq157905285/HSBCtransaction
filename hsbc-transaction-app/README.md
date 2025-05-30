@@ -41,6 +41,7 @@ java -jar target/hsbc-transaction-app-0.0.1-SNAPSHOT.jar
 ---
 
 ## 📁 项目结构
+```
 hsbc-transaction-app/
 ├── src/
 │   ├── main/
